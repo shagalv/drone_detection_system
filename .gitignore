@@ -1,0 +1,38 @@
+# 权重文件
+weights/
+*.pt
+*.pth
+*.ckpt
+
+# 子项目（通过 setup_submodules.sh 克隆）
+third_party/
+
+# 数据集
+datasets/
+
+# 输出结果
+results/
+eval_results.json
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# 编译产物（Sparse_conv 等）
+*.so
+*.pyd
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/

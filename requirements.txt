@@ -1,0 +1,33 @@
+# ======================================================
+# DeblurDet 依赖清单
+# ======================================================
+
+# PyTorch (根据 CUDA 版本选择，此处为 CUDA 11.1)
+# torch==1.10.1+cu111  # 请访问 https://pytorch.org 选择正确版本
+# torchvision==0.11.2+cu111
+
+# MMDetection 生态（CEASC 所需）
+mmcv-full==1.5.1
+mmdet==2.24.1
+
+# CEASC 额外依赖
+nltk>=3.7
+albumentations>=1.1.0
+pycocotools>=2.0.4
+
+# DeepDeblur-PyTorch 依赖
+scikit-image>=0.19.0
+imageio>=2.16.0
+tqdm>=4.62.0
+einops>=0.4.1
+
+# 通用图像处理
+opencv-python>=4.5.5
+Pillow>=9.0.0
+numpy>=1.21.0
+
+# 可视化
+matplotlib>=3.5.0
+
+# 工具
+PyYAML>=6.0
