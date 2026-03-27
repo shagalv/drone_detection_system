@@ -52,6 +52,8 @@ def parse_args():
     p.add_argument("--det-config",        default="configs/ceasc_gfl_res18_visdrone.py")
     p.add_argument("--det-checkpoint",    default="weights/detect/ceasc_gfl_visdrone.pth")
     p.add_argument("--device",            default="auto")
+    p.add_argument("--score-thr",         type=float, default=0.3, help="检测置信度阈值")
+    p.add_argument("--nms-thr",           type=float, default=0.5, help="NMS 阈值")
     p.add_argument("--blur-threshold",    type=float, default=100.0,
                    help="Laplacian 方差阈值，低于此值才去模糊（越小越保守）")
     p.add_argument("--vis",    action="store_true")
@@ -67,7 +69,13 @@ def main():
 
     # 初始化各模块
     deblur   = DeblurModel(checkpoint=args.deblur_checkpoint, device=args.device)
-    detector = CEASCDetector(config=args.det_config, checkpoint=args.det_checkpoint, device=args.device)
+    detector = CEASCDetector(
+        config=args.det_config,
+        checkpoint=args.det_checkpoint,
+        device=args.device,
+        score_thr=args.score_thr,
+        nms_thr=args.nms_thr,
+    )
     assessor = BlurAssessor(method="laplacian", threshold=args.blur_threshold)
     pipeline = AdaptivePipeline(deblur, detector, assessor)
     visualizer = Visualizer()
